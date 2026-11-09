@@ -17,7 +17,7 @@ class User():
         #ajout de l'utilisateur dans la liste globale
         tousLesUtilisateurs.append(self)
 
-#Fonction pour cree un ticket
+#Fonction pour cree un tiket
     def createTicket(self,ticket)->None:
         ticket.createdBy = self   #le ticket connait son createur
         if ticket not in self.tickets:

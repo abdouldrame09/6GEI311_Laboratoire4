@@ -19,7 +19,7 @@ class Developpeur(User):
     def validateTicket(self,ticket)->None:
         ticket.updateStatus(Statut.VALIDATION)
 
-#Fonction pour fermer un ticket
+#Fonction pour fermé un ticket
     def closeTicket(self,ticket)->None:
         ticket.updateStatus(Statut.TERMINE)
 
