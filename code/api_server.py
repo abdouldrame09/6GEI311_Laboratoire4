@@ -215,6 +215,7 @@ def update_ticket_status(ticket_id: int):
     if not trouve:
         return jsonify({"error": f"Statut '{new_status_str}' invalide."}), 400
 
+    print(f"\n[OPERATION REST] PUT /api/tickets/{ticket_id}/status -> Statut: 200 OK | Statut modifie en : {ticket.status.name}\n", flush=True)
     return jsonify(ticket.to_dict()), 200
 
 # Assigner un ticket a un developpeur
@@ -241,6 +242,7 @@ def assign_ticket(ticket_id: int):
         return jsonify({"error": "Developpeur introuvable."}), 404
 
     ticket.assignTo(dev_cible)
+    print(f"\n[OPERATION REST] PUT /api/tickets/{ticket_id}/assign -> Statut: 200 OK | Assigne au developpeur : {dev_cible.name}\n", flush=True)
     return jsonify(ticket.to_dict()), 200
 
 # Gestion des utilisateurs

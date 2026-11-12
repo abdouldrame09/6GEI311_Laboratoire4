@@ -40,6 +40,7 @@ class ApiClient:
 
     # Creer un nouveau ticket (gere aussi l'upload de l'image si specifiee)
     def create_ticket(self, title: str, priority: str, user_id: int, description_texte: str = None, image_path: str = None) -> dict:
+        print(f"\n[CLIENT Tkinter] Envoi requete REST : POST {self.base_url}/api/tickets (Titre: '{title}')", flush=True)
         if image_path and os.path.exists(image_path):
             # Envoi avec l'image attachee (multipart)
             data = {
@@ -63,7 +64,9 @@ class ApiClient:
             res = requests.post(f"{self.base_url}/api/tickets", json=payload, timeout=5)
 
         res.raise_for_status()
-        return res.json()
+        ticket_data = res.json()
+        print(f"[CLIENT Tkinter] Reponse REST recue : 201 CREATED (Ticket #{ticket_data.get('ticketId', ticket_data.get('id'))})\n", flush=True)
+        return ticket_data
 
     # Assigner un ticket a un developpeur
     def assign_ticket(self, ticket_id: int, dev_id: int = None, dev_name: str = None) -> dict:

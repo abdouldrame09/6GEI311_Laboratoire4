@@ -10,9 +10,9 @@ from ApplicationGUI import ApplicationGUI
 # Fonction pour demarrer le serveur Flask en arriere-plan
 def run_server(port=5000):
     import logging
-    # Reduire les messages de werkzeug dans la console
+    # Activer l'affichage des requetes werkzeug (GET, POST, etc.) dans la console
     log = logging.getLogger('werkzeug')
-    log.setLevel(logging.ERROR)
+    log.setLevel(logging.INFO)
     app.run(host="127.0.0.1", port=port, debug=False, use_reloader=False)
 
 def main():
